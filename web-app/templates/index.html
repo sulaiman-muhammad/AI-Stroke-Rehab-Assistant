@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        form {
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 18px;
+            color: #333;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #instructions {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Stroke Rehab Assistant</h1>
+    <form action="/exercise" method="post">
+        <label for="exercise">Choose an Exercise:</label>
+        <select name="exercise" id="exercise" onchange="showInstructions()">
+            <option value="arm_raise">Arm Raise (Upper Body)</option>
+            <option value="knee_extension">Knee Extension (Lower Body)</option>
+            <option value="sit_to_stand">Sit to Stand (Full Body)</option>
+            <option value="pattern_tracing">Pattern Tracing (Balance and Coordination)</option>
+        </select>
+        <button type="submit">Start Exercise</button>
+    </form>
+    <div id="instructions">
+        <h3 style="text-align: center;">Instructions:</h3>
+        <p>{{ instructions }}</p>
+    </div>
+    <script>
+        function showInstructions() {
+            var exercise = document.getElementById("exercise").value;
+            var instructions = {
+                "arm_raise": "To perform the arm raise exercise, stand straight, keep your arms at your sides, and then raise both arms above your head, keeping your elbows straight, and then return to the starting position. Repeat this motion for the desired number of repetitions.",
+                "knee_extension": "To perform the knee extension exercise, sit on a chair with both feet flat on the ground. Slowly lift both legs together, fully extending your knees, and then return to the starting position. Repeat this motion for the desired number of repetitions.",
+                "sit_to_stand": "To perform the sit to stand exercise, sit on a chair with both feet flat on the ground. Stand up and then sit back down, keeping your back straight and using your legs. Repeat this motion for the desired number of repetitions. ",
+                "pattern_tracing": "To perform the pattern tracing exercise, trace the moving points on the screen using your hands or legs. Repeat this motion until you hit 5 targets."
+            };
+
+            document.getElementById("instructions").innerHTML = "<h3>Instructions:</h3><p>" + instructions[exercise] + "</p>";
+        }
+
+        window.onload = function() {
+            showInstructions();
+        }
+    </script>
+</body>
+</html>

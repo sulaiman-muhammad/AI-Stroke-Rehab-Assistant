@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        .result-container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+        strong {
+            color: #333;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercise Results</h1>
+    <div class="result-container">
+        <p><strong>Exercise: </strong>{{ exercise_name }}</p>
+        {% if exercise_name == 'pattern_tracing' %}
+            <p><strong>Targets Touched: </strong>{{ count }}</p>
+        {% else %}
+            <p><strong>Reps Completed: </strong>{{ count }}</p>
+        {% endif %}
+        <p><strong>Time Taken: </strong>{{ time_taken }} seconds</p>
+        <p><strong>Feedback: </strong>{{ feedback }}</p>
+        <a href="/">Go Back to Home</a>
+    </div>
+</body>
+</html>
